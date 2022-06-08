@@ -33,9 +33,9 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpMessage: "This is a help message!",
         title: 'Help',
-        name: 'Oguzhan Tuna'
+        name: 'Oguzhan Tuna',
+        helpText: "This is a help message!"
     });
 });
 
@@ -43,6 +43,22 @@ app.get('/weather', (req, res) => {
     res.send({
         forecase: 'It is so hot',
         location: 'Arizona'
+    });
+});
+
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Oguzhan Tuna',
+        errorMessage: 'Help article not found!'
+    });
+});
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404',
+        name: 'Oguzhan Tuna',
+        errorMessage: 'Page not found!'
     });
 });
 
